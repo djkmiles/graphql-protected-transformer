@@ -1,0 +1,18 @@
+{
+  "name": "graphql-protected-transformer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "djk",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^15.0.0",
+    "graphql-mapping-template": "^4.13.4",
+    "graphql-transformer-common": "^4.15.0",
+    "graphql-transformer-core": "^6.17.1"
+  }
+}
