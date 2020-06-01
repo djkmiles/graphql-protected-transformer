@@ -1,7 +1,7 @@
 {
-  "name": "graphql-protected-transformer",
+  "name": "@djk/graphql-protected-transformer",
   "version": "1.0.0",
-  "description": "",
+  "description": "AWS Amplify directive to shape any field with @protected",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,14 @@
     "graphql-mapping-template": "^4.13.4",
     "graphql-transformer-common": "^4.15.0",
     "graphql-transformer-core": "^6.17.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djkmiles/graphql-protected-transformer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/djkmiles/graphql-protected-transformer/issues"
+  },
+  "homepage": "https://github.com/djkmiles/graphql-protected-transformer#readme"
 }

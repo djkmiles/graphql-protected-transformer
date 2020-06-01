@@ -13,10 +13,12 @@ export default class ProtectedTransformer extends Transformer {
 
 		let fieldName = definition.name.value
 		let typeName = parent.name.value
+		let [ argument ] = directive.arguments
+		let value = JSON.stringify(argument ? argument.value.value : null)
 
 		let getID = ResolverResourceIDs.DynamoDBGetResolverResourceID(typeName)
 		let getStep = printBlock(`[graphql-protected-transformer] Protecting "${fieldName}"`)(
-			iff(raw(`!$util.isNull($ctx.result.${fieldName})`), qref(`$ctx.result.put("${fieldName}", "[protected]")`), true)
+			iff(raw(`!$util.isNull($ctx.result.${fieldName})`), qref(`$ctx.result.put("${fieldName}", ${value})`), true)
 		)
 		let getResolver = ctx.getResource(getID)
 		getResolver.Properties.ResponseMappingTemplate = getStep + '\n\n' + getResolver.Properties.ResponseMappingTemplate
@@ -27,7 +29,7 @@ export default class ProtectedTransformer extends Transformer {
 			raw(`
 #foreach ($item in $ctx.result.items)
 	#if (!$util.isNull($item.${fieldName}))
-		$util.qr($item.put("${fieldName}", "[protected]"))
+		$util.qr($item.put("${fieldName}", ${value}))
 	#end
 #end
 `))
