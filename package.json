@@ -1,6 +1,6 @@
 {
   "name": "@djk/graphql-protected-transformer",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "AWS Amplify directive to shape any field with @protected",
   "main": "index.js",
   "scripts": {
