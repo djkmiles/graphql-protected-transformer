@@ -21,7 +21,7 @@ export default class ProtectedTransformer extends Transformer {
 			iff(raw(`!$util.isNull($ctx.result.${fieldName})`), qref(`$ctx.result.put("${fieldName}", ${value})`), true)
 		)
 		let getResolver = ctx.getResource(getID)
-		getResolver?.Properties?.ResponseMappingTemplate = getStep + '\n\n' + getResolver.Properties.ResponseMappingTemplate
+		if (getResolver) getResolver.Properties.ResponseMappingTemplate = getStep + '\n\n' + getResolver.Properties.ResponseMappingTemplate
 		ctx.setResource(getID, getResolver)
 		
 		let listID = ResolverResourceIDs.DynamoDBListResolverResourceID(typeName)
@@ -34,7 +34,7 @@ export default class ProtectedTransformer extends Transformer {
 #end
 `))
 		let listResolver = ctx.getResource(listID)
-		listResolver?.Properties?.ResponseMappingTemplate = listStep + '\n\n' + listResolver.Properties.ResponseMappingTemplate
+		if (listResolver) listResolver.Properties.ResponseMappingTemplate = listStep + '\n\n' + listResolver.Properties.ResponseMappingTemplate
 		ctx.setResource(listID, listResolver)
 	}
 }
